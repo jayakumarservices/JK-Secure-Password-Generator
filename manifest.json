@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "JK Secure Password Generator",
+  "version": "1.0",
+  "description": "Generate strong passwords and manage one-time login credentials",
+  "icons": {
+    "16": "jk_logo.png",
+    "48": "jk_logo.png",
+    "128": "jk_logo.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "alarms"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "jk_logo.png",
+      "48": "jk_logo.png",
+      "128": "jk_logo.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+} 
