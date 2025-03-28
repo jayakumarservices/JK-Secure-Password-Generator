@@ -4,7 +4,7 @@
   <title>JK Secure Password Generator</title>
   <style>
     body {
-      width: 350px;
+      width: 400px;
       padding: 15px;
       font-family: Arial, sans-serif;
       font-size: 16px;
@@ -85,11 +85,20 @@
       flex-direction: column;
       gap: 10px;
     }
-    input[type="text"] {
+    input[type="text"],
+    input[type="email"] {
       padding: 10px;
       border: 1px solid #ddd;
       border-radius: 4px;
       font-size: 16px;
+    }
+    textarea {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      min-height: 60px;
+      resize: vertical;
     }
     .logo {
       text-align: center;
@@ -100,6 +109,82 @@
       height: 80px;
       border-radius: 50%;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .website-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      object-fit: contain;
+      background-color: #f5f5f5;
+      padding: 2px;
+    }
+    .website-logo-placeholder {
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .login-list {
+      margin-top: 20px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .login-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .login-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex: 1;
+    }
+    .login-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .login-details strong {
+      color: #2c3e50;
+      font-size: 16px;
+    }
+    .login-details small {
+      color: #666;
+      font-size: 14px;
+    }
+    .login-details .website {
+      color: #1976D2;
+    }
+    .login-details .note {
+      font-style: italic;
+      color: #666;
+    }
+    .login-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .error-message {
+      color: #d32f2f;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .success-message {
+      color: #4CAF50;
+      font-size: 14px;
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -142,11 +227,20 @@
     <div class="one-time-login">
       <h3>One-Time Login</h3>
       <div class="input-group">
-        <input type="text" id="website" placeholder="Website URL">
-        <input type="text" id="username" placeholder="Username">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="text" id="website" placeholder="Website URL" required>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="email" id="email" placeholder="Email" required>
         <input type="text" id="one-time-password" placeholder="Generated Password" readonly>
+        <textarea id="note" placeholder="Additional Notes (optional)"></textarea>
       </div>
       <button id="generate-one-time">Generate One-Time Login</button>
+      <div id="message"></div>
+    </div>
+
+    <div class="login-list">
+      <h3>Saved Logins</h3>
+      <div id="saved-logins"></div>
     </div>
   </div>
   <script src="popup.js"></script>
